@@ -1,0 +1,22 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: api-gateway-server
+  cloud:
+    gateway:
+      routes:
+      - id: cart_ms
+        uri: lb://cart_ms
+        predicates:
+          - Path=/api/cart/**
+          
+      - id: product_ms
+        uri: lb://product_ms
+        predicates:
+          - Path=/api/product/**
+          
+      - id: order_ms
+        uri: lb://order_ms
+        predicates:
+          - Path=/api/order/**
